@@ -1,0 +1,84 @@
+.tabler {
+  display: table;
+  box-align: center;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 32%;
+}
+
+.tableRow {
+  display: table-row;
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+.tableCell {
+  display: table-cell;
+  border: 1px solid #dddddd;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  height: 60px;
+  width: 4%;
+  min-height: 100%;
+}
+
+.BP {
+  background-image: url(images/BlackPawn.png);
+  background-position: center;
+}
+
+.BR {
+  background-image: url(images/BlackRook.png);
+  background-position: center;
+}
+
+.BK {
+  background-image: url(images/BlackKnight.png);
+  background-position: center;
+}
+
+.BB {
+  background-image: url(images/BlackBishop.png);
+  background-position: center;
+}
+
+.BS {
+  background-image: url(images/BlackKing.png);
+  background-position: center;
+}
+
+.BQ {
+  background-image: url(images/BlackQueen.png);
+  background-position: center;
+}
+
+.WP {
+  background-image: url(images/WhitePawn.png);
+  background-position: center;
+}
+
+.WR {
+  background-image: url(images/WhiteRook.png);
+  background-position: center;
+}
+
+.WK {
+  background-image: url(images/WhiteKnight.png);
+  background-position: center;
+}
+
+.WB {
+  background-image: url(images/WhiteBishop.png);
+  background-position: center;
+}
+
+.WS {
+  background-image: url(images/WhiteKing.png);
+  background-position: center;
+}
+
+.WQ {
+  background-image: url(images/WhiteQueen.png);
+  background-position: center;
+}

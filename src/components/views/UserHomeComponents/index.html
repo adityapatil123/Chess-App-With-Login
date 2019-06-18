@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+        <title>ChessBoard</title>
+	<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+        <h2>ChessBoard</h2>
+        <div id="myTable" class="tabler">
+            <div class="tableRow">
+                <div onclick="Clicking(this)" class="tableCell BlackRook Black" id="BR1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackKnight Black" id="BK1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackBishop Black" id="BB1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackQueen Black" id="BQ1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackKing Black" id="BS1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackBishop Black" id="BB2"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackKnight Black" id="BK2"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackRook Black" id="BR2"></div>
+            </div>
+            <div class="tableRow">
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP1"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP2"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP3"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP4"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP5"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP6"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP7"></div>
+                <div onclick="Clicking(this)" class="tableCell BlackPawn Black" id="BP8"></div>
+            </div>
+            <div class="tableRow">
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+            </div>
+            <div class="tableRow">
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+            </div>
+            <div class="tableRow">
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+            </div>
+            <div class="tableRow">
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+                        <div onclick="Clicking(this)" class="tableCell"></div>
+            </div>
+            <div class="tableRow">
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP1"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP2"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP3"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP4"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP5"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP6"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP7"></div>
+                <div onclick="Clicking(this)" class="tableCell WhitePawn White" id="WP8"></div>
+            </div>
+            <div class="tableRow">
+                <div onclick="Clicking(this)" class="tableCell WhiteRook White" id="WR1"></div>
+                <div onclick="Clicking(this)" class="tableCell WhiteKnight White" id="WK1"></div>
+                <div onclick="Clicking(this)" class="tableCell WhiteBishop White" id="WB1"></div>
+                <div onclick="Clicking(this)" class="tableCell WhiteQueen White" id="WQ1"></div>                        
+                <div onclick="Clicking(this)" class="tableCell WhiteKing White" id="WS1"></div>
+                <div onclick="Clicking(this)" class="tableCell WhiteBishop White" id="WB2"></div>                        
+                <div onclick="Clicking(this)" class="tableCell WhiteKnight White" id="WK2"></div>
+                <div onclick="Clicking(this)" class="tableCell WhiteRook White" id="WR2"></div>
+            </div>
+        </div>
+        <br>
+        <div id="demo">Press at some position!!!</div>
+        <p id="demo1">Its White's Time</p>
+
+        <script>
+                var tabler = document.getElementById("myTable");
+                var allRows= tabler.getElementsByClassName("tableRow");
+                var clickedElement = null;
+                var moveCount=0;
+                var canBeMoved = false;
+                
+                for(i=0;i<8;i++)
+                {
+                        for(j=0;j<8;j++)
+                        {
+                                var cellsOfRow = allRows[i].getElementsByClassName("tableCell");
+                                cellsOfRow[j].setAttribute("onmouseover","MouseOver(this)");
+                                cellsOfRow[j].setAttribute("onmouseout","MouseOut(this)");
+                                cellsOfRow[j].setAttribute("onclick","Clicking(this)");
+                                if((i-j)%2==0)
+                                {
+                                        cellsOfRow[j].style.backgroundColor = "grey";
+                                }
+                                if(cellsOfRow[j].classList.length == 1)
+                                {
+                                        cellsOfRow[j].setAttribute("id", "NUL"+i+j);
+                                }
+                                else{
+                                        cellsOfRow[j].setAttribute("id", cellsOfRow[j].id+i+j);
+                                }
+                        } 
+                }
+
+                var count = 1;
+                var prevElemTypeID = null;
+                
+                function Clicking(elem)
+                {
+                        var elemTypeWithID = elem.id.slice(0,3);
+                        var x = parseInt(elem.id[4])+1;  
+                        var y = parseInt(elem.id[3])+1;
+        
+                        if(count==1)
+                        {
+                                if(elemTypeWithID!="NUL")
+                                {
+                                        document.getElementById("demo").innerHTML = "Clicked is " + elemTypeWithID+ " & position is x = "+x+" & y = "+y + " Element is selected!!!!";
+                                        if(moveCount % 2 == 1)
+                                        {
+                                                document.getElementById("demo1").innerHTML = "Its Black's Time";
+                                                if(elem.classList[2]=="Black")
+                                                {
+                                                        elem.style.backgroundColor = "red";
+                                                        clickedElement = elem;
+                                                        prevElemTypeID = elemTypeWithID;
+                                                        count++ ;     
+                                                }
+                                        }
+                                        else{
+                                                document.getElementById("demo1").innerHTML = "Its White's Time";
+                                                if(elem.classList[2]=="White")
+                                                {
+                                                        elem.style.backgroundColor = "red";
+                                                        clickedElement = elem;
+                                                        prevElemTypeID = elemTypeWithID;
+                                                        count++ ;     
+                                                }
+                                        }                                    
+                                                       
+                                }
+                                else{
+                                        document.getElementById("demo").innerHTML = "Nothing is present here,Click some element & position is x = "+x+" & y = "+y;
+                                }
+
+                        }
+
+                        else{
+                                var xPrevElem = parseInt(clickedElement.id[4]);  
+                                var yPrevElem = parseInt(clickedElement.id[3]);
+                                if((elemTypeWithID=="NUL")||(elem.classList[2]!=clickedElement.classList[2]))
+                                {
+                                        count--;
+                                        document.getElementById("demo").innerHTML = "Clicked is " + prevElemTypeID+ " & position is x = "+x+" & y = "+y + " Element is moved!!!!";
+                                        // var backEnd_move = "false";                                        
+                                        xNew=x-1;
+                                        yNew=y-1;
+                                        
+					var check = null;
+					var kingAlive = null;
+                                        var xhttp = new XMLHttpRequest();
+                                        xhttp.onreadystatechange = function() {
+                                        if (this.readyState == 4 && this.status == 200) {
+                                                var json = JSON.parse(this.responseText);
+                                                canBeMoved = json.isMoved;
+						check = json.isThereCheck;
+						kingAlive = json.bothKingAlive;
+                                                document.getElementById("demo1").innerHTML = json.msg;
+                                                console.log(json);
+                                        }																
+                                        };
+                                        xhttp.open("POST","http://localhost:8888/table",false)
+                                        xhttp.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+                                        var moveData = JSON.stringify({"sourceID": clickedElement.id,"destinationID": elem.id});
+                                        xhttp.send(moveData);
+ 
+                                        if(canBeMoved==true){
+                                        allRows[yNew].getElementsByClassName("tableCell")[xNew].setAttribute("class",clickedElement.className);
+                                        allRows[yNew].getElementsByClassName("tableCell")[xNew].setAttribute("id",prevElemTypeID+yNew+xNew);
+                                        allRows[yPrevElem].getElementsByClassName("tableCell")[xPrevElem].setAttribute("class","tableCell");
+                                        allRows[yPrevElem].getElementsByClassName("tableCell")[xPrevElem].setAttribute("id","NUL"+yPrevElem+xPrevElem); 
+                                        moveCount++;
+                                        canBeMoved = false;
+
+					if(check==true)
+						{alert("Check Alert!!");
+						}
+                                        }
+
+					if(kingAlive == false)
+					{alert("Game is over!!Please refresh the page for new game!!")
+					}
+                                        
+
+                                        if((xPrevElem-yPrevElem)%2==0)
+                                        {
+                                                clickedElement.style.backgroundColor = "grey";                                                        
+                                        }
+                                        else clickedElement.style.backgroundColor = "white";
+                                        clickedElement=null;
+                                       
+                                }
+                                else
+                                {
+                                        if((xPrevElem-yPrevElem)%2==0)
+                                                {
+                                                        clickedElement.style.backgroundColor = "grey";                                                        
+                                                }
+                                        else clickedElement.style.backgroundColor = "white";
+
+                                        if(elem==clickedElement)
+                                        {
+                                                clickedElement=null;
+                                                count--;
+                                        }
+                                        else{
+                                                document.getElementById("demo").innerHTML = "Clicked is " + elemTypeWithID+ " & position is x = "+x+" & y = "+y + " Element is selected!!!!";
+                                                clickedElement=elem;
+                                                elem.style.backgroundColor = "red";
+                                                prevElemTypeID = elemTypeWithID;
+                                        }
+                                }
+                        }
+                
+                }
+
+                function MouseOver(elem) {
+                        if(clickedElement!=elem){
+                        elem.style.backgroundColor = "yellow";
+                        }
+                 
+                }
+
+                function MouseOut(elem) {
+                if(clickedElement!=elem){
+                        var x = parseInt(elem.id[4]);  
+                        var y = parseInt(elem.id[3]);
+                        if((x-y)%2==0)
+                                {
+                                        elem.style.backgroundColor = "grey";
+                                }
+                        else elem.style.backgroundColor = "white";
+                        }
+                }
+
+                // var tableRowArray = new Array();
+                // var row = document.getElementsByClassName('tableRow');
+                // for(j=0;j<row.length;j++)
+                // {
+                //         var elements = row[j].getElementsByClassName('tableCell')
+                //         var data = new Array(8);
+                //         var json = new Array(8);
+                //         for(i=0; i<8; i++)
+                //         {                       
+                //                 var  class_Name = elements[i].className;
+                //                 var elem_id = elements[i].id;
+                //                 data[i] = JSON.stringify({"className": class_Name,"ID": elem_id});
+                //                 json[i] = JSON.parse(data[i]);       
+                //                 //row[i]=json;
+                //         }	
+			
+                //         tableRowArray[j] = json;
+                // }
+                // console.log(tableRowArray[0][0].className);
+
+
+		// var jsonArray = JSON.stringify(tableRowArray);
+		// console.log(jsonArray);
+                // var xhttp = new XMLHttpRequest();
+                // xhttp.onreadystatechange = function() {
+                // if (this.readyState == 4 && this.status == 200) {
+                //         document.getElementById("demo1").innerHTML = this.responseText;
+                // }																
+                // };
+                // xhttp.getAllResponseHeaders()
+                // xhttp.open("POST","http://localhost:8888/table",true)
+               	// xhttp.setRequestHeader("Content-type", "application/json");
+                // xhttp.send(jsonArray);
+
+                
+
+        </script> 
+    </body>
+</html>
