@@ -13,7 +13,7 @@ Connection here is **ReactJS <=> Kotlin <=> MySQL**
 ### ReactJS:
 - App is made using **Webpack** module bundler - [Webpack complete setup](https://github.com/adityapatil123/Hello-App-React-Typescript-with-Webpack)
 - 3 pages: Login, SignUp and User page.
-- In User page, 2 componensts **OthernUsers** and **RequestBoard**(In which there will  be **Chessboard**)
+- In User page, 2 componensts **OtherUsers** and **RequestBoard**(In which there will  be **Chessboard**)
 - **Redux** is used for state management.
 - **SemanticsUI** is used for styling.
 - Simple authentication is used, one can go for Auth and JWT tokens.
